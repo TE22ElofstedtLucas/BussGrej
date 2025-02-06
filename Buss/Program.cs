@@ -61,4 +61,29 @@ public class BookingSystem
         bus = new Bus(20); // 20 seats
     }
 
+    public void Menu()
+    {
+        while (true)
+        {
+            Console.WriteLine("\n1. Boka plats\n2. Avboka plats\n3. Avsluta");
+            Console.Write("Välj ett alternativ: ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    CreateBooking();
+                    break;
+                case "2":
+                    CancelBooking();
+                    break;
+                case "3":
+                    return;
+                default:
+                    Console.WriteLine("Ogiltigt val.");
+                    break;
+            }
+        }
+    }
+
    
