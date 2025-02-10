@@ -86,4 +86,43 @@ public class BookingSystem
         }
     }
 
-   
+    public void CreateBooking()
+    {
+        Console.Write("Ange ditt platsnummer (1-20): ");
+        int seatNumber = int.Parse(Console.ReadLine());
+        Seat seat = bus.GetSeat(seatNumber);
+
+        if (seat != null && !seat.Booked)
+        {
+            seat.Book();
+            Console.WriteLine("bokad plats!");
+        }
+        else
+        {
+            Console.WriteLine("Platsen är bokad eller ogiltig.");
+        }
+    }
+
+    public void CancelBooking()
+    {
+        Console.Write("Ange platsnummer (1-20): ");
+        int seatNumber = int.Parse(Console.ReadLine());
+        Seat seat = bus.GetSeat(seatNumber);
+
+        if (seat != null && seat.Booked)
+        {
+            seat.Cancel();
+            Console.WriteLine("Bokningen avbokad!");
+        }
+        else
+        {
+            Console.WriteLine("Ingen bokning hittades på den platsen.");
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        BookingSystem bookingSystem = new BookingSystem();
+        bookingSystem.Menu();
+    }
+}
